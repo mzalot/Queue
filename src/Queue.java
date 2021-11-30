@@ -43,17 +43,23 @@ public class Queue <T>{
 
     //dequeue method
     public T dequeue(){
+        //edge case
+        if(isEmpty()){
+            return null;
+        }
         //store the first node to return it
         NodeProject topNode = firstNode;
         //find the 2nd furthest up node to set as the new top node
         NodeProject currentNode = lastNode;
-        for(int i = 0; i < counter-2; i++){
+        for(int i = counter-2; i > 0; i--){
             currentNode = currentNode.getNode1();
         }
         currentNode.setNode1(null);
         firstNode = currentNode;
-        //remove one from the size
-        counter--;
+        //remove one from the size if size is greater than zero
+        if(counter>0){
+            counter--;
+        }
 
         //return the value in the removed node
         return (T) topNode.getValue();
@@ -73,6 +79,10 @@ public class Queue <T>{
 
     //peek method
     public T peek(){
+        //edge case
+        if(isEmpty()){
+            return null;
+        }
         return (T)firstNode.getValue();
     }
 }
