@@ -40,4 +40,23 @@ public class Queue <T>{
         //node has been added so add to the counter
         counter++;
     }
+
+    //dequeue method
+    public T dequeue(){
+        //store the first node to return it
+        NodeProject topNode = firstNode;
+        //find the 2nd furthest up node to set as the new top node
+        NodeProject currentNode = lastNode;
+        for(int i = 0; i < counter-2; i++){
+            currentNode = currentNode.getNode1();
+        }
+        currentNode.setNode1(null);
+        firstNode = currentNode;
+        //remove one from the size
+        counter--;
+
+        //return the value in the removed node
+        return (T) topNode.getValue();
+
+    }
 }
