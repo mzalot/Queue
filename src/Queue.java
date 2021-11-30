@@ -8,17 +8,36 @@
  **/
 public class Queue <T>{
     //instance data
-    private int size;
+    private int counter;
     private NodeProject firstNode;
     private NodeProject lastNode;
-    private NodeProject parentNode;
 
     //default constructor
     public Queue(){
-        size = 0;
+        counter = 0;
         //no first and last node so set to null
         firstNode = null;
         lastNode = null;
-        parentNode = new NodeProject();
+    }
+
+    //enqueue method
+    public void enqueue(T data){
+        //add the data to a node to add to the queue
+        NodeProject addNode = new NodeProject(data);
+        //check if first and last nodes are empty
+        //if first node is empty then add to first node
+        //if last node is empty and first is full then add to last node
+        if(firstNode == null){
+            firstNode = addNode;
+        }else if(lastNode == null){
+            lastNode = addNode;
+        }
+        //if first and last node are full then link the new node to the last node and set it to be the new last node
+        else{
+            addNode.setNode1(lastNode);
+            lastNode = addNode;
+        }
+        //node has been added so add to the counter
+        counter++;
     }
 }
