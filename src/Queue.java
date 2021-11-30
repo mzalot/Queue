@@ -59,4 +59,20 @@ public class Queue <T>{
         return (T) topNode.getValue();
 
     }
+
+    //isEmpty method
+    public boolean isEmpty(){
+        boolean b = counter>0;
+        return !b;
+    }
+
+    //size method
+    public int size(){
+        return counter;
+    }
+
+    //peek method
+    public T peek(){
+        return (T)firstNode.getValue();
+    }
 }
