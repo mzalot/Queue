@@ -9,8 +9,8 @@
 public class Queue <T>{
     //instance data
     private int counter;
-    private NodeProject firstNode;
-    private NodeProject lastNode;
+    private QueueNode firstNode;
+    private QueueNode lastNode;
 
     //default constructor
     public Queue(){
@@ -23,7 +23,7 @@ public class Queue <T>{
     //enqueue method
     public void enqueue(T data){
         //add the data to a node to add to the queue
-        NodeProject addNode = new NodeProject(data);
+        QueueNode addNode = new QueueNode(data);
         //check if first and last nodes are empty
         //if first node is empty then add to first node
         //if last node is empty and first is full then add to last node
@@ -48,9 +48,9 @@ public class Queue <T>{
             return null;
         }
         //store the first node to return it
-        NodeProject topNode = firstNode;
+        QueueNode topNode = firstNode;
         //find the 2nd furthest up node to set as the new top node
-        NodeProject currentNode = lastNode;
+        QueueNode currentNode = lastNode;
         for(int i = counter-2; i > 0; i--){
             currentNode = currentNode.getNode1();
         }
